@@ -1,3 +1,5 @@
+// import 'dart:async';
+
 import 'dart:async';
 
 import 'package:animise_application/theme.dart';
@@ -11,14 +13,22 @@ class SplashPage extends StatefulWidget {
 @override
 void initState() {
 
-  Timer(Duration(seconds: 3),
-  () => Navigator.pushNamed(context, '/sign-in'),);
+  // Timer(Duration(seconds: 3),
+  // () => Navigator.pushNamed(context, '/sign-in'),);
 
-  super.initState();
+  // super.initState();
   
 }
 class _SplashPageState extends State<SplashPage> {
   @override
+
+  void initState() {
+
+    Timer(Duration(seconds: 3),()=> Navigator.pushNamed(context, '/sign-in'));
+
+    super.initState();
+    
+  }
   Widget build(BuildContext context) {
     return Scaffold(
         backgroundColor: primaryOrangeColor,
