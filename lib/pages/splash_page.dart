@@ -10,15 +10,6 @@ class SplashPage extends StatefulWidget {
   _SplashPageState createState() => _SplashPageState();
 }
 
-@override
-void initState() {
-
-  // Timer(Duration(seconds: 3),
-  // () => Navigator.pushNamed(context, '/sign-in'),);
-
-  // super.initState();
-  
-}
 class _SplashPageState extends State<SplashPage> {
   @override
 

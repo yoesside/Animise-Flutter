@@ -20,3 +20,4 @@ FontWeight light = FontWeight.w300;
 FontWeight reguler = FontWeight.w400;
 FontWeight medium = FontWeight.w500;
 FontWeight bold = FontWeight.w700;
+FontWeight semibold = FontWeight.w600;
