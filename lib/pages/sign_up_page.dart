@@ -161,7 +161,7 @@ class SignUpPage extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              "Phone number",
+              "Address",
               style:
                   secondaryTextStyle.copyWith(fontSize: 16, fontWeight: bold),
             ),
