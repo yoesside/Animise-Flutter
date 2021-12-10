@@ -16,6 +16,14 @@ TextStyle secondaryTextStyle = GoogleFonts.poppins(
   color: textWhite,
 );
 
+TextStyle thirdTextStyle = GoogleFonts.poppins(
+  color: primaryOrangeColor,
+);
+
+TextStyle fourthTextStyle = GoogleFonts.poppins(
+  color: primaryYellowColor,
+);
+
 FontWeight light = FontWeight.w300;
 FontWeight reguler = FontWeight.w400;
 FontWeight medium = FontWeight.w500;
