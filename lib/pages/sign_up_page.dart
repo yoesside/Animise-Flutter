@@ -254,7 +254,7 @@ class SignUpPage extends StatelessWidget {
       );
     }
 
-    Widget signInButton() {
+    Widget signUpButton() {
       return Container(
         height: 45,
         width: double.infinity,
@@ -265,7 +265,7 @@ class SignUpPage extends StatelessWidget {
             backgroundColor: primaryYellowColor,
           ),
           child: Text(
-            "Sign In",
+            "Sign Up",
             style: thirdTextStyle.copyWith(
               fontSize: 16,
               fontWeight: bold,
@@ -299,7 +299,7 @@ class SignUpPage extends StatelessWidget {
               passwordInput(),
               phoneNumberInput(),
               addressInput(),
-              signInButton(),
+              signUpButton(),
               Spacer(),
             ],
           ),
