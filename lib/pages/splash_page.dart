@@ -25,11 +25,11 @@ class _SplashPageState extends State<SplashPage> {
         backgroundColor: primaryOrangeColor,
         body: Center(
           child: Container(
-            width: 210,
-            height: 175,
+            width: 250,
+            height: 195,
             decoration: BoxDecoration(
               image:
-                  DecorationImage(image: AssetImage("assets/Logo_Animise.png")),
+                  DecorationImage(image: AssetImage("assets/Logo_Splash.png")),
             ),
           ),
         ));

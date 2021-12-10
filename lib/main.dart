@@ -1,8 +1,8 @@
 // import 'dart:js';
 
 import 'package:animise_application/pages/sign_in_page.dart';
+import 'package:animise_application/pages/sign_up_page.dart';
 import 'package:animise_application/pages/splash_page.dart';
-// import 'package:animise_application/theme.dart';
 import 'package:flutter/material.dart';
 
 
@@ -18,7 +18,8 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       routes: {
         '/': (context) => SplashPage(),
-        '/sign-in': (context) => SignInPage() 
+        '/sign-in': (context) => SignInPage(),
+        '/sign-up': (context) => SignUpPage(),
       },
     );
   }

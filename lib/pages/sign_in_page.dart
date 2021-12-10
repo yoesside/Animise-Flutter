@@ -109,7 +109,7 @@ class SignInPage extends StatelessWidget {
         width: double.infinity,
         margin: EdgeInsets.only(top: 90),
         child: TextButton(
-          onPressed: () {},
+          onPressed: (){},
           style: TextButton.styleFrom(
             backgroundColor: primaryYellowColor,
           ),
@@ -124,29 +124,27 @@ class SignInPage extends StatelessWidget {
       );
     }
 
-    Widget footer(){
+    Widget footer() {
       return Container(
-        margin: EdgeInsets.only(
-          bottom: 30),
+          margin: EdgeInsets.only(bottom: 30),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Text("Don’t have an account?",
-                style: primaryTextStyle.copyWith(
-                  fontSize: 14,
-                  fontWeight: semibold
-                )
-              ),
-              Text(" Sign Up",
-                style: fourthTextStyle.copyWith(
-                  fontSize: 14,
-                  fontWeight: semibold
+                  style: primaryTextStyle.copyWith(
+                      fontSize: 14, fontWeight: semibold)),
+              GestureDetector(
+                onTap: (){
+                  Navigator.pushNamed(context, '/sign-up');
+                },
+                child: Text(
+                  " Sign Up",
+                  style: fourthTextStyle.copyWith(
+                      fontSize: 14, fontWeight: semibold),
                 ),
-
               ),
             ],
-          )
-        );  
+          ));
     }
 
     return Scaffold(
