@@ -258,7 +258,7 @@ class SignUpPage extends StatelessWidget {
       return Container(
         height: 45,
         width: double.infinity,
-        margin: EdgeInsets.only(top: 65),
+        margin: EdgeInsets.only(top: 35),
         child: TextButton(
           onPressed: () {},
           style: TextButton.styleFrom(
@@ -273,6 +273,29 @@ class SignUpPage extends StatelessWidget {
           ),
         ),
       );
+    }
+
+    Widget footer() {
+      return Container(
+          margin: EdgeInsets.only(bottom: 10),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Text("Masuk",
+                  style: primaryTextStyle.copyWith(
+                      fontSize: 14, fontWeight: semibold)),
+              GestureDetector(
+                onTap: (){
+                  Navigator.pushNamed(context, '/homescreen-admin');
+                },
+                child: Text(
+                  " Home Admin",
+                  style: fourthTextStyle.copyWith(
+                      fontSize: 14, fontWeight: semibold),
+                ),
+              ),
+            ],
+          ));
     }
 
 
@@ -301,6 +324,7 @@ class SignUpPage extends StatelessWidget {
               addressInput(),
               signUpButton(),
               Spacer(),
+              footer(),
             ],
           ),
         ),

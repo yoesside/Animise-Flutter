@@ -147,6 +147,7 @@ class SignInPage extends StatelessWidget {
           ));
     }
 
+
     return Scaffold(
       backgroundColor: primaryOrangeColor,
       resizeToAvoidBottomInset: false,
@@ -182,6 +183,7 @@ class SignInPage extends StatelessWidget {
               signInButton(),
               Spacer(),
               footer(),
+              
             ],
           ),
         ),
