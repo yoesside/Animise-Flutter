@@ -39,6 +39,7 @@ class SignInPage extends StatelessWidget {
                     ),
                     Expanded(
                       child: TextFormField(
+                        autofocus: true,
                         style: primaryTextStyle,
                         decoration: InputDecoration.collapsed(
                             hintText: "Enter your username"),
@@ -88,6 +89,7 @@ class SignInPage extends StatelessWidget {
                     ),
                     Expanded(
                       child: TextFormField(
+                        autofocus: true,
                         style: primaryTextStyle,
                         obscureText: true,
                         decoration: InputDecoration.collapsed(

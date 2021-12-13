@@ -65,7 +65,7 @@ class HomescreenAdminPage extends StatelessWidget {
               children: [
                 InkWell(
                   onTap: () {
-
+                    Navigator.pushNamed(context, '/add-product');
                   },
                   child: Image.asset("assets/add_product.png",
                     width: 80

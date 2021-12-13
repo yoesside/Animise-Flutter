@@ -24,6 +24,10 @@ TextStyle fourthTextStyle = GoogleFonts.poppins(
   color: primaryYellowColor,
 );
 
+TextStyle fifthTextStyle = GoogleFonts.poppins(
+  color: Colors.red,
+);
+
 FontWeight light = FontWeight.w300;
 FontWeight reguler = FontWeight.w400;
 FontWeight medium = FontWeight.w500;
