@@ -1,7 +1,17 @@
 import 'package:animise_application/theme.dart';
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 
+import '../config/routes.dart';
+
 class SignUpPage extends StatelessWidget {
+
+	TextEditingController fullname = TextEditingController();
+	TextEditingController username = TextEditingController();
+	TextEditingController password = TextEditingController();
+	TextEditingController phone    = TextEditingController();
+	TextEditingController address  = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
 
@@ -41,6 +51,7 @@ class SignUpPage extends StatelessWidget {
                     Expanded(
                       child: TextFormField(
                         style: primaryTextStyle,
+						controller: fullname,
                         decoration: InputDecoration.collapsed(
                             hintText: "Enter your fullname"),
                       ),
@@ -90,7 +101,7 @@ class SignUpPage extends StatelessWidget {
                     Expanded(
                       child: TextFormField(
                         style: primaryTextStyle,
-                        
+                        controller: username,
                         decoration: InputDecoration.collapsed(
                             hintText: "Enter your username"),
                       ),
@@ -139,6 +150,7 @@ class SignUpPage extends StatelessWidget {
                     ),
                     Expanded(
                       child: TextFormField(
+						  controller: phone,
                         style: primaryTextStyle,
                         obscureText: true,
                         decoration: InputDecoration.collapsed(
@@ -190,6 +202,7 @@ class SignUpPage extends StatelessWidget {
                     Expanded(
                       child: TextFormField(
                         style: primaryTextStyle,
+						controller: address,
                         obscureText: true,
                         decoration: InputDecoration.collapsed(
                             hintText: "Enter your phone number"),
@@ -239,6 +252,7 @@ class SignUpPage extends StatelessWidget {
                     ),
                     Expanded(
                       child: TextFormField(
+						  controller: password,
                         style: primaryTextStyle,
                         obscureText: true,
                         decoration: InputDecoration.collapsed(
@@ -260,7 +274,91 @@ class SignUpPage extends StatelessWidget {
         width: double.infinity,
         margin: EdgeInsets.only(top: 65),
         child: TextButton(
-          onPressed: () {},
+          onPressed: () async {
+			  	var endpoint = (api['baseUrl'] as String) + '/' + (api['version'] as String) + (((api['endpoints'] as Map)['auth'] as Map)['register'] as String);
+
+				Dio dio = new Dio();
+
+				try {
+					
+					// username : rini66
+					// password : 123456
+			  		Response<Map> response;
+					dynamic data = {
+						'name': fullname.text,
+						'username': username.text,
+						'password': password.text,
+						'phone': phone.text,
+						'address': address.text,
+					};
+				  
+					response = await dio.post(endpoint, data: data, options: Options(
+						headers: {
+							'Accept': 'application/json',
+							'Content-Type': 'application/json'
+						}
+					));
+
+					AlertDialog alert = AlertDialog(
+						title: Text("Register"),
+						content: Text("Register success"),
+					);
+
+					// show the dialog
+					showDialog(
+						context: context,
+						builder: (BuildContext context) {
+							return alert;
+						},
+					);
+				} on DioError catch (e) {
+					Response? response = e.response;
+					String content = '';
+
+					Widget okButton = TextButton(
+						child: Text("OK"),
+						onPressed: () {},
+					);
+
+					if (response?.data['errors']['name'] != null) {
+					  	content = response?.data['errors']['name'][0];
+
+					} else if (response?.data['errors']['username'] != null) {
+					  	content = response?.data['errors']['username'][0];
+
+					} else if (response?.data['errors']['password'] != null) {
+					  	content = response?.data['errors']['password'][0];
+
+					} else if (response?.data['errors']['phone'] != null) {
+					  	content = response?.data['errors']['phone'][0];
+
+					} else if (response?.data['errors']['address'] != null) {
+					  	content = response?.data['errors']['address'][0];
+
+					} else if (response?.data['errors']['user'] != null) {
+						content = response?.data['errors']['user'];
+						
+					}
+
+					AlertDialog alert = AlertDialog(
+						title: Text("Validation error"),
+						content: Text(content),
+						actions: [
+							okButton,
+						],
+					);
+
+					// show the dialog
+					showDialog(
+						context: context,
+						builder: (BuildContext context) {
+							return alert;
+						},
+					);
+
+					// print((e.response?.data as Map)['errors']);
+				}
+		  },
           style: TextButton.styleFrom(
             backgroundColor: primaryYellowColor,
           ),

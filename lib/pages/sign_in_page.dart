@@ -1,7 +1,15 @@
+import 'dart:io';
+
 import 'package:animise_application/theme.dart';
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
+import 'package:animise_application/config/routes.dart';
 
 class SignInPage extends StatelessWidget {
+
+	TextEditingController username = TextEditingController();
+	TextEditingController password = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     Widget usernameInput() {
@@ -39,6 +47,7 @@ class SignInPage extends StatelessWidget {
                     ),
                     Expanded(
                       child: TextFormField(
+						  controller: username,
                         style: primaryTextStyle,
                         decoration: InputDecoration.collapsed(
                             hintText: "Enter your username"),
@@ -88,6 +97,7 @@ class SignInPage extends StatelessWidget {
                     ),
                     Expanded(
                       child: TextFormField(
+						  controller: password,
                         style: primaryTextStyle,
                         obscureText: true,
                         decoration: InputDecoration.collapsed(
@@ -109,7 +119,79 @@ class SignInPage extends StatelessWidget {
         width: double.infinity,
         margin: EdgeInsets.only(top: 90),
         child: TextButton(
-          onPressed: (){},
+          onPressed: () async {
+
+				var endpoint = (api['baseUrl'] as String) + '/' + (api['version'] as String) + (((api['endpoints'] as Map)['auth'] as Map)['login'] as String);
+
+				Dio dio = new Dio();
+
+				try {
+					
+					// username : rini66
+					// password : 123456
+			  		Response<Map> response;
+					dynamic data = {
+						'username': username.text,
+						'password': password.text,
+					};
+				  
+					response = await dio.post(endpoint, data: data, options: Options(
+						headers: {
+							'Accept': 'application/json',
+							'Content-Type': 'application/json'
+						}
+					));
+
+					AlertDialog alert = AlertDialog(
+						title: Text("Login"),
+						content: Text("Login success"),
+					);
+
+					// show the dialog
+					showDialog(
+						context: context,
+						builder: (BuildContext context) {
+							return alert;
+						},
+					);
+				} on DioError catch (e) {
+					Response? response = e.response;
+					String content = '';
+
+					Widget okButton = TextButton(
+						child: Text("OK"),
+						onPressed: () {},
+					);
+
+					if (response?.data['errors']['username'] != null) {
+					  	content = response?.data['errors']['username'][0];
+					} else if (response?.data['errors']['password'] != null) {
+					  	content = response?.data['errors']['password'][0];
+					} else {
+						content = response?.data['errors']['user'];
+					}
+
+					AlertDialog alert = AlertDialog(
+						title: Text("Validation error"),
+						content: Text(content),
+						actions: [
+							okButton,
+						],
+					);
+
+					// show the dialog
+					showDialog(
+						context: context,
+						builder: (BuildContext context) {
+							return alert;
+						},
+					);
+
+					// print((e.response?.data as Map)['errors']);
+				}
+
+				// print(api.endpoints?.auth);
+		  },
           style: TextButton.styleFrom(
             backgroundColor: primaryYellowColor,
           ),
