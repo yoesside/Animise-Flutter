@@ -1,5 +1,7 @@
 import 'package:animise_application/theme.dart';
 import 'package:flutter/material.dart';
+import 'package:image_picker/image_picker.dart';
+import 'dart:io';
 
 class AddProductPage extends StatefulWidget {
   @override
@@ -9,6 +11,9 @@ class AddProductPage extends StatefulWidget {
 class _AddProductPageState extends State<AddProductPage> {
   int selectedValue = 0;
   bool activePreOrderSwitch = false;
+  final ImagePicker _picker = ImagePicker();
+  XFile? image;
+  
 
   @override
   Widget build(BuildContext context) {
@@ -45,19 +50,32 @@ class _AddProductPageState extends State<AddProductPage> {
                     width: 175,
                   ),
                   TextButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        filePicker();
+                      },
                       child: Text(
                         "Add Photo",
                         style: thirdTextStyle.copyWith(
                           fontWeight: medium,
                           fontSize: 13,
                         ),
-                      ))
+                      )
+                    ),
+                  SizedBox(
+                    height: 14,
+                  ),
                   //Kendala masih bingung cara upload foto produk + masih nyari cara
                 ],
               ),
+              image == null
+                ? Text("")
+                : Image.file(
+                    File(image!.path),
+                    width: 120,
+                    fit: BoxFit.cover,
+                  ),
               SizedBox(
-                height: 80,
+                height: 20,
               ),
               Row(children: [
                 Text(
@@ -278,5 +296,14 @@ class _AddProductPageState extends State<AddProductPage> {
         ),
       ),
     );
+  }
+
+  void filePicker() async {
+    final XFile? selectImage =
+        await _picker.pickImage(source: ImageSource.gallery);
+    print(selectImage!.path);
+    setState(() {
+      image = selectImage;
+    });
   }
 }

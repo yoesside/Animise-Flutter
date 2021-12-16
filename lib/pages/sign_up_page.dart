@@ -1,7 +1,9 @@
 import 'package:animise_application/theme.dart';
 import 'package:flutter/material.dart';
+import '../config/routes.dart';
 
 class SignUpPage extends StatelessWidget {
+
   @override
   Widget build(BuildContext context) {
 
@@ -140,7 +142,6 @@ class SignUpPage extends StatelessWidget {
                     Expanded(
                       child: TextFormField(
                         style: primaryTextStyle,
-                        obscureText: true,
                         decoration: InputDecoration.collapsed(
                             hintText: "Enter your phone number"),
                       ),
@@ -190,7 +191,6 @@ class SignUpPage extends StatelessWidget {
                     Expanded(
                       child: TextFormField(
                         style: primaryTextStyle,
-                        obscureText: true,
                         decoration: InputDecoration.collapsed(
                             hintText: "Enter your phone number"),
                       ),

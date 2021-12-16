@@ -1,5 +1,6 @@
 import 'package:animise_application/theme.dart';
 import 'package:flutter/material.dart';
+import 'package:animise_application/config/routes.dart';
 
 class SignInPage extends StatelessWidget {
   @override

@@ -6,7 +6,7 @@ class HomescreenAdminPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
 
-    int counter = 0;
+    // int counter = 0;
 
     return Scaffold(
       appBar: AppBar(
@@ -17,7 +17,7 @@ class HomescreenAdminPage extends StatelessWidget {
             children: [
               IconButton(icon: Icon(Icons.notifications),onPressed: (){
                 setState((){
-                  counter = 0;
+                  // counter = 0;
                 });
               }),
             ],
