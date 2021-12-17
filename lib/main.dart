@@ -2,6 +2,7 @@
 
 import 'package:animise_application/pages/add_product_page.dart';
 import 'package:animise_application/pages/homescreen_admin_page.dart';
+import 'package:animise_application/pages/homescreen_customer_page.dart';
 import 'package:animise_application/pages/sign_in_page.dart';
 import 'package:animise_application/pages/sign_up_page.dart';
 import 'package:animise_application/pages/splash_page.dart';
@@ -24,6 +25,7 @@ class MyApp extends StatelessWidget {
         '/sign-up': (context) => SignUpPage(),
         '/homescreen-admin': (context) => HomescreenAdminPage(),
         '/add-product': (context) => AddProductPage(),
+        '/main-customer': (conter) => MainCustomerPage(),
       },
     );
   }

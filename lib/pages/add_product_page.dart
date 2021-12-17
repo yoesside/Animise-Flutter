@@ -21,6 +21,7 @@ class _AddProductPageState extends State<AddProductPage> {
       appBar: AppBar(
         backgroundColor: primaryOrangeColor,
         title: Text("Add Product"),
+        automaticallyImplyLeading: false,
       ),
       resizeToAvoidBottomInset: false,
       body: SingleChildScrollView(

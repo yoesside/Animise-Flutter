@@ -9,17 +9,24 @@ class HomescreenAdminPage extends StatelessWidget {
     // int counter = 0;
 
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       appBar: AppBar(
         backgroundColor: primaryOrangeColor,
+        automaticallyImplyLeading: false,
         title:  Text("Home"),
         actions: [
           Stack(
             children: [
-              IconButton(icon: Icon(Icons.notifications),onPressed: (){
+              // IconButton(icon: Icon(Icons.notifications),onPressed: (){
+              //   setState((){
+              //     // counter = 0;
+              //   });
+              // }),
+              IconButton(onPressed: (){
                 setState((){
-                  // counter = 0;
+                  //Log out admin
                 });
-              }),
+              }, icon: Icon(Icons.exit_to_app))
             ],
           )
         ],
@@ -30,7 +37,12 @@ class HomescreenAdminPage extends StatelessWidget {
             Container(
               width: 412,
               height: 200,
-              color: primaryYellowColor,
+              decoration: BoxDecoration(
+                gradient: LinearGradient(colors: [
+                  Color(0xffFF8A00), primaryYellowColor
+                ])
+              ),
+              // color: primaryYellowColor,
               child: Column(
                 children: [
                   SizedBox(
@@ -68,7 +80,7 @@ class HomescreenAdminPage extends StatelessWidget {
                     Navigator.pushNamed(context, '/add-product');
                   },
                   child: Image.asset("assets/add_product.png",
-                    width: 80
+                    width: 84
                   ),
                 ),
                 InkWell(

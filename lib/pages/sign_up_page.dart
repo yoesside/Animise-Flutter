@@ -286,7 +286,7 @@ class SignUpPage extends StatelessWidget {
                       fontSize: 14, fontWeight: semibold)),
               GestureDetector(
                 onTap: (){
-                  Navigator.pushNamed(context, '/homescreen-admin');
+                  Navigator.pushNamed(context, '/main-customer');
                 },
                 child: Text(
                   " Home Admin",
