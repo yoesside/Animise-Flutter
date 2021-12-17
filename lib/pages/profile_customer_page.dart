@@ -43,8 +43,10 @@ class _ProfileCustomerPageState extends State<ProfileCustomerPage> {
       body: Container(
         padding: EdgeInsets.fromLTRB(40, 40, 20, 20),
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisAlignment: MainAxisAlignment.start,
           children: [
-            Row(children: [
+            Row(crossAxisAlignment: CrossAxisAlignment.start, children: [
               ClipOval(
                 child: image != null
                     ? Image.file(
@@ -55,19 +57,100 @@ class _ProfileCustomerPageState extends State<ProfileCustomerPage> {
                       )
                     : Image.asset(
                         "assets/Profile_admin.png",
-                        width: 100,
+                        width: 80,
                       ),
               ),
               SizedBox(
                 width: 23,
               ),
-              Text("Rindo Alexiel",
-                style: primaryTextStyle.copyWith(
-                  fontWeight: bold,
-                  fontSize: 14,
+              Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+                Text(
+                  "Rindo Alexiel",
+                  style: primaryTextStyle.copyWith(
+                    fontWeight: bold,
+                    fontSize: 14,
+                  ),
                 ),
-              )
-            ])
+                SizedBox(
+                  height: 8,
+                ),
+                Text(
+                  "082117845748",
+                  style: primaryTextStyle.copyWith(
+                    fontWeight: medium,
+                    fontSize: 14,
+                  ),
+                ),
+                SizedBox(
+                  height: 8,
+                ),
+                Text(
+                  "rindo_alexiel8",
+                  style: primaryTextStyle.copyWith(
+                    fontWeight: medium,
+                    fontSize: 14,
+                  ),
+                ),
+              ]),
+            ]),
+            SizedBox(
+              height: 30,
+            ),
+            Text(
+              "Account Information",
+              style: primaryTextStyle.copyWith(
+                fontSize: 15,
+                fontWeight: bold,
+              ),
+            ),
+            SizedBox(
+              height: 5,
+            ),
+            TextButton(
+              onPressed: () {
+                Navigator.pushNamed(context, '/edit-name-phone');
+              },
+              child: Text(
+                "Edit name & phone number",
+                style: thirdTextStyle.copyWith(
+                  fontSize: 13,
+                  fontWeight: reguler,
+                ),
+              ),
+            ),
+            TextButton(
+                onPressed: () {
+                  Navigator.pushNamed(context, '/edit-password');
+                },
+                child: Text(
+                  "Edit password",
+                  style: thirdTextStyle.copyWith(
+                    fontSize: 13,
+                    fontWeight: reguler,
+                  ),
+                )),
+            TextButton(
+              onPressed: () {
+                Navigator.pushNamed(context, '/edit-address');
+              },
+              child: Text(
+                "Edit address",
+                style: thirdTextStyle.copyWith(
+                  fontSize: 13,
+                  fontWeight: reguler,
+                ),
+              ),
+            ),
+            TextButton(
+              onPressed: () {},
+              child: Text(
+                "Wishlist",
+                style: thirdTextStyle.copyWith(
+                  fontSize: 13,
+                  fontWeight: reguler,
+                ),
+              ),
+            ),
           ],
         ),
       ),

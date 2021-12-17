@@ -1,6 +1,9 @@
 // import 'dart:js';
 
 import 'package:animise_application/pages/add_product_page.dart';
+import 'package:animise_application/pages/edit_address_page.dart';
+import 'package:animise_application/pages/edit_name_phonenum_page.dart';
+import 'package:animise_application/pages/edit_password_page.dart';
 import 'package:animise_application/pages/homescreen_admin_page.dart';
 import 'package:animise_application/pages/homescreen_customer_page.dart';
 import 'package:animise_application/pages/sign_in_page.dart';
@@ -26,7 +29,13 @@ class MyApp extends StatelessWidget {
         '/homescreen-admin': (context) => HomescreenAdminPage(),
         '/add-product': (context) => AddProductPage(),
         '/main-customer': (conter) => MainCustomerPage(),
+        '/edit-name-phone': (conter) => EditNamePhoneNum(),
+        '/edit-password': (conter) => EditPasswordPage(),
+        '/edit-address': (conter) => EditAddressPage(),
       },
     );
   }
+}
+
+class EditAdressPage {
 }
