@@ -48,6 +48,7 @@ class SignInPage extends StatelessWidget {
                     Expanded(
                       child: TextFormField(
 						  controller: username,
+                        autofocus: true,
                         style: primaryTextStyle,
                         decoration: InputDecoration.collapsed(
                             hintText: "Enter your username"),
@@ -98,6 +99,7 @@ class SignInPage extends StatelessWidget {
                     Expanded(
                       child: TextFormField(
 						  controller: password,
+                        autofocus: true,
                         style: primaryTextStyle,
                         obscureText: true,
                         decoration: InputDecoration.collapsed(
@@ -142,41 +144,39 @@ class SignInPage extends StatelessWidget {
 						}
 					));
 
-					AlertDialog alert = AlertDialog(
-						title: Text("Login"),
-						content: Text("Login success"),
-					);
+					if (response.data?['data']['role'] == 'admin') {
+						Navigator.pushNamedAndRemoveUntil(context, '/homescreen-admin', (route) => false);
+					} else {
+						Navigator.pushNamedAndRemoveUntil(context, '/main-customer', (route) => false);
+					}
 
-					// show the dialog
-					showDialog(
-						context: context,
-						builder: (BuildContext context) {
-							return alert;
-						},
-					);
+					// AlertDialog alert = AlertDialog(
+					// 	title: Text("Login"),
+					// 	content: Text("Login success"),
+					// );
+
+					// // show the dialog
+					// showDialog(
+					// 	context: context,
+					// 	builder: (BuildContext context) {
+					// 		return alert;
+					// 	},
+					// );
 				} on DioError catch (e) {
 					Response? response = e.response;
 					String content = '';
-
-					Widget okButton = TextButton(
-						child: Text("OK"),
-						onPressed: () {},
-					);
 
 					if (response?.data['errors']['username'] != null) {
 					  	content = response?.data['errors']['username'][0];
 					} else if (response?.data['errors']['password'] != null) {
 					  	content = response?.data['errors']['password'][0];
 					} else {
-						content = response?.data['errors']['user'];
+						content = response?.data['errors']['user'][0];
 					}
 
 					AlertDialog alert = AlertDialog(
 						title: Text("Validation error"),
 						content: Text(content),
-						actions: [
-							okButton,
-						],
 					);
 
 					// show the dialog
@@ -229,6 +229,7 @@ class SignInPage extends StatelessWidget {
           ));
     }
 
+
     return Scaffold(
       backgroundColor: primaryOrangeColor,
       resizeToAvoidBottomInset: false,
@@ -264,6 +265,7 @@ class SignInPage extends StatelessWidget {
               signInButton(),
               Spacer(),
               footer(),
+              
             ],
           ),
         ),

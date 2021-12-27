@@ -1,7 +1,6 @@
 import 'package:animise_application/theme.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
-
 import '../config/routes.dart';
 
 class SignUpPage extends StatelessWidget {
@@ -152,7 +151,6 @@ class SignUpPage extends StatelessWidget {
                       child: TextFormField(
 						  controller: phone,
                         style: primaryTextStyle,
-                        obscureText: true,
                         decoration: InputDecoration.collapsed(
                             hintText: "Enter your phone number"),
                       ),
@@ -272,7 +270,7 @@ class SignUpPage extends StatelessWidget {
       return Container(
         height: 45,
         width: double.infinity,
-        margin: EdgeInsets.only(top: 65),
+        margin: EdgeInsets.only(top: 35),
         child: TextButton(
           onPressed: () async {
 			  	var endpoint = (api['baseUrl'] as String) + '/' + (api['version'] as String) + (((api['endpoints'] as Map)['auth'] as Map)['register'] as String);
@@ -373,6 +371,29 @@ class SignUpPage extends StatelessWidget {
       );
     }
 
+    Widget footer() {
+      return Container(
+          margin: EdgeInsets.only(bottom: 10),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Text("Masuk",
+                  style: primaryTextStyle.copyWith(
+                      fontSize: 14, fontWeight: semibold)),
+              GestureDetector(
+                onTap: (){
+                  Navigator.pushNamed(context, '/main-customer');
+                },
+                child: Text(
+                  " Home Admin",
+                  style: fourthTextStyle.copyWith(
+                      fontSize: 14, fontWeight: semibold),
+                ),
+              ),
+            ],
+          ));
+    }
+
 
     return Scaffold(
       backgroundColor: primaryOrangeColor,
@@ -399,6 +420,7 @@ class SignUpPage extends StatelessWidget {
               addressInput(),
               signUpButton(),
               Spacer(),
+              footer(),
             ],
           ),
         ),

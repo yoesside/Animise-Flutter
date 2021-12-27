@@ -7,6 +7,7 @@ Color textBlack = Color(0xff000000);
 Color textWhite = Color(0xffFFFFFF);
 Color textGray = Color(0xff5A5757);
 Color chatOrangeColor = Color(0xffFF965A);
+Color bodyBackgroundColor = Color(0xffEEEDED);
 
 TextStyle primaryTextStyle = GoogleFonts.poppins(
   color: textBlack,
@@ -22,6 +23,10 @@ TextStyle thirdTextStyle = GoogleFonts.poppins(
 
 TextStyle fourthTextStyle = GoogleFonts.poppins(
   color: primaryYellowColor,
+);
+
+TextStyle fifthTextStyle = GoogleFonts.poppins(
+  color: Colors.red,
 );
 
 FontWeight light = FontWeight.w300;

@@ -20,6 +20,7 @@ class _SplashPageState extends State<SplashPage> {
     super.initState();
     
   }
+
   Widget build(BuildContext context) {
     return Scaffold(
         backgroundColor: primaryOrangeColor,
